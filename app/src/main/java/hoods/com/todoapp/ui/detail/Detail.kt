@@ -1,5 +1,6 @@
 package hoods.com.todoapp.ui.detail
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
@@ -12,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import hoods.com.todoapp.data.Todo
+import hoods.com.todoapp.ui.home.GetLogo
+import hoods.com.todoapp.ui.theme.Blue_
 
 @Composable
 fun DetailScreen(
@@ -44,10 +47,13 @@ fun DetailScreenComponent(
 ) {
     val isTodoEdit = selectedId == -1L
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
+            .background(Blue_)
+            .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        GetLogo()
         Spacer(modifier = Modifier.size(16.dp))
         OutlinedTextField(
             value = todoText,
