@@ -32,10 +32,10 @@ fun TodoNavHost() {
             }
         }
 
-        composable(NavRoute.Location.route) {
-            LocationScreen {
-                navController.navigate(NavRoute.Location.route)
-            }
+        composable (NavRoute.Location.route) {
+          LocationScreen {
+              navController.navigate(NavRoute.Location.route)
+          }
         }
 
         composable(NavRoute.Detail.route + "/{id}",

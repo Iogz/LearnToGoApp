@@ -15,25 +15,27 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import hoods.com.todoapp.NavRoute
 import hoods.com.todoapp.R
 import hoods.com.todoapp.data.Todo
+import hoods.com.todoapp.ui.detail.DetailScreen
 import hoods.com.todoapp.ui.home.components.TodoItem
 import hoods.com.todoapp.ui.theme.Blue_
-import hoods.com.todoapp.ui.theme.DeepBlue
-import hoods.com.todoapp.ui.theme.LightRed
 import java.text.DateFormat
 import java.util.*
 
+
 @Composable
 fun HomeScreen(onNavigate: (Todo?) -> Unit) {
+
+    val navController = rememberNavController()
 
     val viewModel = viewModel(HomeViewModel::class.java)
     val state by viewModel.state.collectAsState()
@@ -60,7 +62,7 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
 
             BottomNavigationItem(
                 selected = bottomState == "Account",
-                onClick = { onNavigate(null) },
+                onClick = { NavRoute.Location},
                 label = { Text(text = "Account") },
                 icon = { Icon(imageVector = Icons.Default.AccountCircle, contentDescription = null
                     )
@@ -69,7 +71,7 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
 
             BottomNavigationItem(
                 selected = bottomState == "Location",
-                onClick = { onNavigate(null) },
+                onClick = {onNavigate(null)},
                 label = { Text(text = "Location") },
                 icon = { Icon(imageVector = Icons.Default.LocationOn, contentDescription = null
                     )
