@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonColors
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -48,6 +49,7 @@ fun DetailScreenComponent(
     onSaveTodo: (Todo) -> Unit,
     selectedId: Long,
 ) {
+
     val isTodoEdit = selectedId == -1L
     Box(contentAlignment = Alignment.Center,
     modifier = Modifier

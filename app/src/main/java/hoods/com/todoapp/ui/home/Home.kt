@@ -124,3 +124,15 @@ fun GetDateAndTime () {
 fun GetLogo () {
     Image(painter = painterResource(id = R.drawable.untitled), contentDescription = "logo")
 }
+
+@Composable
+fun LocationScreen(onNavigate: () -> Unit) {
+    val calendar = Calendar.getInstance().time
+    val dateFormat = DateFormat.getDateInstance(DateFormat.FULL).format(calendar)
+    val timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar)
+
+    Column() {
+        Text(text = "$dateFormat", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+        Text(text = "$timeFormat", fontSize = 20.sp)
+    }
+}

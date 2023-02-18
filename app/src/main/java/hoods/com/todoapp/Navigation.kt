@@ -8,10 +8,12 @@ import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import hoods.com.todoapp.ui.detail.DetailScreen
 import hoods.com.todoapp.ui.home.HomeScreen
+import hoods.com.todoapp.ui.home.LocationScreen
 
 sealed class NavRoute(val route: String) {
     object Home : NavRoute("home_route")
     object Detail : NavRoute("detail_route")
+    object Location : NavRoute("location_route")
 }
 
 @Composable
@@ -29,14 +31,22 @@ fun TodoNavHost() {
                 }
             }
         }
-        composable(
-            NavRoute.Detail.route + "/{id}",
+
+        composable(NavRoute.Location.route) {
+            LocationScreen {
+                navController.navigate(NavRoute.Location.route)
+            }
+        }
+
+        composable(NavRoute.Detail.route + "/{id}",
             arguments = listOf(navArgument("id") { type = NavType.LongType }),
         ) {
             DetailScreen(selectedId = it.arguments?.getLong("id") ?: -1) {
                 navController.navigateUp()
             }
         }
+
+
 
     }
 
