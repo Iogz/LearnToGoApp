@@ -44,7 +44,7 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
             Icon(imageVector = Icons.Default.Add, contentDescription = null)
         }
     },
-
+        /** Weiterleitung führt bei allen zu New Note, muss überarbeitet werden*/
     bottomBar = {
         BottomNavigation(
             modifier = Modifier
