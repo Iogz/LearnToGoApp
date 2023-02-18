@@ -122,10 +122,5 @@ fun GetDateAndTime () {
 
 @Composable
 fun GetLogo () {
-    Image(
-<<<<<<< HEAD
-        painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "logo")
-=======
-        painter = painterResource(id = R.drawable.untitled), contentDescription = "logo")
->>>>>>> d8f4a3e (Initial commit)
+    Image(painter = painterResource(id = R.drawable.untitled), contentDescription = "logo")
 }
