@@ -55,14 +55,14 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
            ) {
             BottomNavigationItem(
                 selected = bottomState == "Home",
-                onClick = { onNavigate(null) },
+                onClick = {             },
                 label = { Text(text = "Home") },
                 icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) }
             )
 
             BottomNavigationItem(
                 selected = bottomState == "Account",
-                onClick = { NavRoute.Location},
+                onClick = {             },
                 label = { Text(text = "Account") },
                 icon = { Icon(imageVector = Icons.Default.AccountCircle, contentDescription = null
                     )
@@ -71,7 +71,7 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
 
             BottomNavigationItem(
                 selected = bottomState == "Location",
-                onClick = {onNavigate(null)},
+                onClick = {         },
                 label = { Text(text = "Location") },
                 icon = { Icon(imageVector = Icons.Default.LocationOn, contentDescription = null
                     )

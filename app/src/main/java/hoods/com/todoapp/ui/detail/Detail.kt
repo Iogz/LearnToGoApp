@@ -90,8 +90,6 @@ fun DetailScreenComponent(
                 val text = if (isTodoEdit) "Save Todo" else "Update todo"
                 Text(text = text)
             }
-
-
         }
     }
 }
