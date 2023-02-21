@@ -24,6 +24,7 @@ fun TodoItem(
     onDelete: (Todo) -> Unit,
     onNavigation: (Todo) -> Unit,
     ) {
+
     Box (contentAlignment = Alignment.Center,
         modifier = Modifier
             .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp)
@@ -62,5 +63,6 @@ fun TodoItem(
         }
 
     }
+
 }
 

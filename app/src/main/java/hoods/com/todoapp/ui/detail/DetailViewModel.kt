@@ -16,6 +16,7 @@ class DetailViewModel(
     private val todoDataSource: TodoDataSource = Graph.todoRepo,
     private val id: Long,
 ) : ViewModel() {
+
     private val todoText = MutableStateFlow("")
     private val todoTime = MutableStateFlow("")
     private val selectId = MutableStateFlow(-1L)

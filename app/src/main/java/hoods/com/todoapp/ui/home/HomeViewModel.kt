@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val todoDataSource: TodoDataSource = Graph.todoRepo) : ViewModel() {
+
     private val _state = MutableStateFlow(HomeViewState())
     val state: StateFlow<HomeViewState>
         get() = _state

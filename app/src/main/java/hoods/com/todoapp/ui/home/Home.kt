@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
@@ -46,47 +47,15 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
             Icon(imageVector = Icons.Default.Add, contentDescription = null)
         }
     },
-        /** Weiterleitung führt bei allen zu New Note, muss überarbeitet werden*/
-    bottomBar = {
-        BottomNavigation(
-            modifier = Modifier
-                .clip(shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp)),
-            backgroundColor = Blue_
-           ) {
-            BottomNavigationItem(
-                selected = bottomState == "Home",
-                onClick = {             },
-                label = { Text(text = "Home") },
-                icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) }
-            )
-
-            BottomNavigationItem(
-                selected = bottomState == "Account",
-                onClick = {             },
-                label = { Text(text = "Account") },
-                icon = { Icon(imageVector = Icons.Default.AccountCircle, contentDescription = null
-                    )
-                }
-            )
-
-            BottomNavigationItem(
-                selected = bottomState == "Location",
-                onClick = {         },
-                label = { Text(text = "Location") },
-                icon = { Icon(imageVector = Icons.Default.LocationOn, contentDescription = null
-                    )
-                }
-            )
-        }
-    }
-
-
-
 
     ) {
+
         Column (modifier = Modifier
+            .fillMaxSize()
             .background(Blue_)
-            .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp)
+            .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
             ) {
             Spacer(modifier = Modifier.size(10.dp))
             GetLogo()
@@ -105,6 +74,7 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
                     )
                 }
             }
+
         }
     }
 }

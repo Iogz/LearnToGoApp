@@ -19,7 +19,7 @@ import hoods.com.todoapp.data.Todo
 import hoods.com.todoapp.ui.home.GetLogo
 import hoods.com.todoapp.ui.theme.Blue_
 import hoods.com.todoapp.ui.theme.DeepBlue
-
+/** UI muss angepasst werden */
 @Composable
 fun DetailScreen(
     selectedId: Long,
