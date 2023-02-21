@@ -1,5 +1,6 @@
 package hoods.com.todoapp
 
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -8,7 +9,6 @@ import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import hoods.com.todoapp.ui.detail.DetailScreen
 import hoods.com.todoapp.ui.home.HomeScreen
-import hoods.com.todoapp.ui.home.LocationScreen
 
 sealed class NavRoute(val route: String) {
     object Home : NavRoute("home_route")
@@ -25,17 +25,8 @@ fun TodoNavHost() {
         startDestination = NavRoute.Home.route,
     ) {
         composable(NavRoute.Home.route) {
-            HomeScreen {
-                navController.navigate(NavRoute.Detail.route + "/${it?.id ?: -1}") {
-
-                }
+            HomeScreen { navController.navigate(NavRoute.Detail.route + "/${it?.id ?: -1}") {}
             }
-        }
-
-        composable (NavRoute.Location.route) {
-          LocationScreen {
-              navController.navigate(NavRoute.Location.route)
-          }
         }
 
         composable(NavRoute.Detail.route + "/{id}",
@@ -46,9 +37,7 @@ fun TodoNavHost() {
             }
         }
 
-
-
     }
 
-
 }
+
