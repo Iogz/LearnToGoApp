@@ -1,4 +1,4 @@
-package hoods.com.todoapp.data
+package hoods.com.todoapp.data.todo.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

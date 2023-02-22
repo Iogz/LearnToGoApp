@@ -16,19 +16,14 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.location.*
-import hoods.com.todoapp.ui.home.HomeViewModel
+import hoods.com.todoapp.data.location.LocationDetails
 import hoods.com.todoapp.ui.theme.Beige3
-import hoods.com.todoapp.ui.theme.Teal200
-import hoods.com.todoapp.ui.theme.TextWhite
 import hoods.com.todoapp.ui.theme.TodoAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,7 +36,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TodoAppTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
 
@@ -75,10 +69,11 @@ class MainActivity : ComponentActivity() {
 
 
                     TodoNavHost()
-                    Column (modifier = Modifier,
+                    Column (
+                        modifier = Modifier,
                         verticalArrangement = Arrangement.Bottom,
-                        horizontalAlignment = Alignment.CenterHorizontally){
-
+                        horizontalAlignment = Alignment.CenterHorizontally)
+                    {
                         val permissions = arrayOf(
                             Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION
@@ -100,23 +95,26 @@ class MainActivity : ComponentActivity() {
                             } else {
                                 launcherMultiplePermissions.launch(permissions)
                             }
-                        },shape = CircleShape,
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Beige3)) {
-                            Text(text = "Press for Location ",
+                        },
+                            shape = CircleShape,
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Beige3)
+                        ) {
+                            Text(
+                                text = "Press for Location ",
                                 fontSize = 18.sp,
                                 fontFamily = FontFamily.SansSerif)
                         }
                         Spacer(modifier = Modifier.size(10.dp))
-                        Text(text = "Latitude: " + currentLocation.latitude,
+                        Text(
+                            text = "Latitude: " + currentLocation.latitude,
                             fontSize = 18.sp,
                             fontFamily = FontFamily.SansSerif)
-                        Text(text = "Longitude: " + currentLocation.longitude,
+                        Text(
+                            text = "Longitude: " + currentLocation.longitude,
                             fontSize = 18.sp,
                             fontFamily = FontFamily.SansSerif)
                         Spacer(modifier = Modifier.size(10.dp))
                     }
-
-
                 }
             }
         }
@@ -153,4 +151,3 @@ class MainActivity : ComponentActivity() {
 }
 
 
-data class LocationDetails(val latitude: Double, val longitude: Double)

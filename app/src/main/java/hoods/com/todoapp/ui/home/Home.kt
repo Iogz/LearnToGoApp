@@ -5,28 +5,19 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import hoods.com.todoapp.NavRoute
 import hoods.com.todoapp.R
-import hoods.com.todoapp.data.Todo
-import hoods.com.todoapp.ui.detail.DetailScreen
+import hoods.com.todoapp.data.todo.room.Todo
 import hoods.com.todoapp.ui.home.components.TodoItem
 import hoods.com.todoapp.ui.theme.*
 import java.text.DateFormat
@@ -84,16 +75,21 @@ fun GetDateAndTime () {
     val dateFormat = DateFormat.getDateInstance(DateFormat.FULL).format(calendar)
     val timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar)
 
-    Column() {
-        Text(text = "$dateFormat", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-        Text(text = "$timeFormat", fontSize = 20.sp)
+    Column {
+        Text(
+            text = "$dateFormat",
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp)
+        Text(
+            text = "$timeFormat",
+            fontSize = 20.sp)
     }
-
 }
 
 @Composable
 fun GetLogo () {
-    Image(modifier = Modifier
+    Image(
+        modifier = Modifier
         .fillMaxWidth()
         .size(250.dp),
         painter = painterResource(id = R.drawable.beige_logo3),

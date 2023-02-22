@@ -1,11 +1,11 @@
-package hoods.com.todoapp.data.room
+package hoods.com.todoapp.data.todo
 
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import hoods.com.todoapp.data.Todo
+import hoods.com.todoapp.data.todo.room.Todo
 import kotlinx.coroutines.flow.Flow
 
 @Dao

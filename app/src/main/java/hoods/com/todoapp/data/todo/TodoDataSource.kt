@@ -1,6 +1,6 @@
-package hoods.com.todoapp.data
+package hoods.com.todoapp.data.todo
 
-import hoods.com.todoapp.data.room.TodoDao
+import hoods.com.todoapp.data.todo.room.Todo
 import kotlinx.coroutines.Dispatchers
 
 class TodoDataSource(private val todoDao: TodoDao) {

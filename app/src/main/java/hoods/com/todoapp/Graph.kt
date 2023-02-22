@@ -1,8 +1,8 @@
 package hoods.com.todoapp
 
 import android.content.Context
-import hoods.com.todoapp.data.TodoDataSource
-import hoods.com.todoapp.data.room.TodoDatabase
+import hoods.com.todoapp.data.todo.TodoDataSource
+import hoods.com.todoapp.todo.data.room.TodoDatabase
 
 object Graph {
     lateinit var database: TodoDatabase

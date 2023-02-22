@@ -14,11 +14,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import hoods.com.todoapp.data.Todo
+import hoods.com.todoapp.data.todo.room.Todo
 import hoods.com.todoapp.ui.home.GetLogo
 import hoods.com.todoapp.ui.theme.*
 
-/** UI muss angepasst werden */
 @Composable
 fun DetailScreen(
     selectedId: Long,
@@ -28,6 +27,7 @@ fun DetailScreen(
         DetailViewModel::class.java,
         factory = DetailViewModelFactory(selectedId)
     )
+
     val state by viewModel.state.collectAsState()
     DetailScreenComponent(todoText = state.todo,
         onTodoTextChange = { viewModel.onTextChange(it) },
@@ -56,24 +56,19 @@ fun DetailScreenComponent(
     ) {
     Column(modifier = Modifier
             .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp),
-
     ) {
         Spacer(modifier = Modifier.size(10.dp))
         GetLogo()
         Spacer(modifier = Modifier.size(16.dp))
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .clip(RoundedCornerShape(10.dp)),
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(10.dp)),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
-
-
             ) {
             OutlinedTextField(
                 value = todoText,
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-
-                ),
                 onValueChange = { onTodoTextChange(it) },
                 label = { Text(text = "Todo-Name") }
             )

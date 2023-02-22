@@ -1,10 +1,11 @@
-package hoods.com.todoapp.data.room
+package hoods.com.todoapp.todo.data.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import hoods.com.todoapp.data.Todo
+import hoods.com.todoapp.data.todo.room.Todo
+import hoods.com.todoapp.data.todo.TodoDao
 
 /**
  *

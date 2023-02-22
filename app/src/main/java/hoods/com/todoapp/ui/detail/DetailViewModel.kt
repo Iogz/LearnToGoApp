@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import hoods.com.todoapp.Graph
-import hoods.com.todoapp.data.Todo
-import hoods.com.todoapp.data.TodoDataSource
+import hoods.com.todoapp.data.todo.room.Todo
+import hoods.com.todoapp.data.todo.TodoDataSource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
