@@ -3,10 +3,7 @@ package hoods.com.todoapp.ui.detail
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonColors
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -54,7 +51,7 @@ fun DetailScreenComponent(
     Box(contentAlignment = Alignment.Center,
     modifier = Modifier
         .fillMaxWidth()
-        .background(Blue_)) {
+        .background(DeepBlue)) {
     Column(
         modifier = Modifier
 
@@ -71,6 +68,9 @@ fun DetailScreenComponent(
             ) {
             OutlinedTextField(
                 value = todoText,
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+
+                ),
                 onValueChange = { onTodoTextChange(it) },
                 label = { Text(text = "Enter Todo") }
             )

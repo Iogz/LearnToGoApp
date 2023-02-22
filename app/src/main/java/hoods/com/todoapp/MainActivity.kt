@@ -11,16 +11,23 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.location.*
 import hoods.com.todoapp.ui.home.HomeViewModel
+import hoods.com.todoapp.ui.theme.Teal200
+import hoods.com.todoapp.ui.theme.TextWhite
 import hoods.com.todoapp.ui.theme.TodoAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -65,34 +72,47 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                    /** ToDoNavHost und unterer Column harmonieren nicht */
+
                     TodoNavHost()
                     Column (modifier = Modifier,
                         verticalArrangement = Arrangement.Bottom,
-                        horizontalAlignment = Alignment.End){
+                        horizontalAlignment = Alignment.CenterHorizontally){
 
                         val permissions = arrayOf(
                             Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION
                         )
-                        Button(onClick = {
-                            if (permissions.all {
-                                    ContextCompat.checkSelfPermission(
-                                        context,
-                                        it
+                        Button(
+                            onClick = {
+                                if (permissions.all {
+                                        ContextCompat.checkSelfPermission(
+                                            context,
+                                            it
                                     ) == PackageManager.PERMISSION_GRANTED
                                 }) {
-                                // Get the location
+                                // If Permission granted, get location
                                 startLocationUpdates()
+                                // Else launch PermissionRequest
                             } else {
                                 launcherMultiplePermissions.launch(permissions)
                             }
-                        }) {
-                            Text(text = "Get current location")
+                        },shape = CircleShape,
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Teal200)) {
+                            Text(text = "Get current location",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.SansSerif)
                         }
-                        Text(text = "Latitude : " + currentLocation.latitude)
-                        Text(text = "Longitude : " + currentLocation.longitude)
+                        Spacer(modifier = Modifier.size(10.dp))
+                        Text(text = "Latitude: " + currentLocation.latitude,
+                            fontSize = 22.sp,
+                            fontFamily = FontFamily.SansSerif)
+                        Text(text = "Longitude: " + currentLocation.longitude,
+                            fontSize = 22.sp,
+                            fontFamily = FontFamily.SansSerif)
+                        Spacer(modifier = Modifier.size(10.dp))
                     }
+
+
                 }
             }
         }

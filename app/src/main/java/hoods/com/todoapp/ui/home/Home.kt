@@ -29,6 +29,7 @@ import hoods.com.todoapp.data.Todo
 import hoods.com.todoapp.ui.detail.DetailScreen
 import hoods.com.todoapp.ui.home.components.TodoItem
 import hoods.com.todoapp.ui.theme.Blue_
+import hoods.com.todoapp.ui.theme.DeepBlue
 import java.text.DateFormat
 import java.util.*
 
@@ -40,7 +41,6 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
 
     val viewModel = viewModel(HomeViewModel::class.java)
     val state by viewModel.state.collectAsState()
-    val bottomState by remember { mutableStateOf("LearnToGo" ) }
 
     Scaffold(floatingActionButton = {
         FloatingActionButton(onClick = { onNavigate(null) }) {
@@ -52,14 +52,11 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
 
         Column (modifier = Modifier
             .fillMaxSize()
-            .background(Blue_)
-            .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            .background(DeepBlue)
+            .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp)
             ) {
-            Spacer(modifier = Modifier.size(10.dp))
             GetLogo()
-            Spacer(modifier = Modifier.size(10.dp))
+            Spacer(modifier = Modifier.size(15.dp))
             GetDateAndTime()
             Spacer(modifier = Modifier.size(10.dp))
             LazyColumn(modifier = Modifier
@@ -94,17 +91,9 @@ fun GetDateAndTime () {
 
 @Composable
 fun GetLogo () {
-    Image(painter = painterResource(id = R.drawable.untitled), contentDescription = "logo")
+    Image(modifier = Modifier
+        .fillMaxWidth(),
+        painter = painterResource(id = R.drawable.untitled),
+        contentDescription = "logo")
 }
 
-@Composable
-fun LocationScreen(onNavigate: () -> Unit) {
-    val calendar = Calendar.getInstance().time
-    val dateFormat = DateFormat.getDateInstance(DateFormat.FULL).format(calendar)
-    val timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar)
-
-    Column() {
-        Text(text = "$dateFormat", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-        Text(text = "$timeFormat", fontSize = 20.sp)
-    }
-}
