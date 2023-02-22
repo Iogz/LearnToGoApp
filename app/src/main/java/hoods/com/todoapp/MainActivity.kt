@@ -26,6 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.location.*
 import hoods.com.todoapp.ui.home.HomeViewModel
+import hoods.com.todoapp.ui.theme.Beige3
 import hoods.com.todoapp.ui.theme.Teal200
 import hoods.com.todoapp.ui.theme.TextWhite
 import hoods.com.todoapp.ui.theme.TodoAppTheme
@@ -83,6 +84,9 @@ class MainActivity : ComponentActivity() {
                             Manifest.permission.ACCESS_FINE_LOCATION
                         )
                         Button(
+                            modifier = Modifier
+                                .height(50.dp)
+                                .width(220.dp),
                             onClick = {
                                 if (permissions.all {
                                         ContextCompat.checkSelfPermission(
@@ -97,17 +101,17 @@ class MainActivity : ComponentActivity() {
                                 launcherMultiplePermissions.launch(permissions)
                             }
                         },shape = CircleShape,
-                        colors = ButtonDefaults.buttonColors(backgroundColor = Teal200)) {
-                            Text(text = "Get current location",
-                                fontSize = 20.sp,
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Beige3)) {
+                            Text(text = "Press for Location ",
+                                fontSize = 18.sp,
                                 fontFamily = FontFamily.SansSerif)
                         }
                         Spacer(modifier = Modifier.size(10.dp))
                         Text(text = "Latitude: " + currentLocation.latitude,
-                            fontSize = 22.sp,
+                            fontSize = 18.sp,
                             fontFamily = FontFamily.SansSerif)
                         Text(text = "Longitude: " + currentLocation.longitude,
-                            fontSize = 22.sp,
+                            fontSize = 18.sp,
                             fontFamily = FontFamily.SansSerif)
                         Spacer(modifier = Modifier.size(10.dp))
                     }

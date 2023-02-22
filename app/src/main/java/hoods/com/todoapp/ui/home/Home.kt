@@ -28,8 +28,7 @@ import hoods.com.todoapp.R
 import hoods.com.todoapp.data.Todo
 import hoods.com.todoapp.ui.detail.DetailScreen
 import hoods.com.todoapp.ui.home.components.TodoItem
-import hoods.com.todoapp.ui.theme.Blue_
-import hoods.com.todoapp.ui.theme.DeepBlue
+import hoods.com.todoapp.ui.theme.*
 import java.text.DateFormat
 import java.util.*
 
@@ -43,7 +42,10 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
     val state by viewModel.state.collectAsState()
 
     Scaffold(floatingActionButton = {
-        FloatingActionButton(onClick = { onNavigate(null) }) {
+        FloatingActionButton(
+            backgroundColor = Beige3,
+            onClick = { onNavigate(null) }
+        ) {
             Icon(imageVector = Icons.Default.Add, contentDescription = null)
         }
     },
@@ -52,13 +54,13 @@ fun HomeScreen(onNavigate: (Todo?) -> Unit) {
 
         Column (modifier = Modifier
             .fillMaxSize()
-            .background(DeepBlue)
+            .background(Beige1)
             .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp)
             ) {
             GetLogo()
-            Spacer(modifier = Modifier.size(15.dp))
+            Spacer(modifier = Modifier.size(30.dp))
             GetDateAndTime()
-            Spacer(modifier = Modifier.size(10.dp))
+            Spacer(modifier = Modifier.size(30.dp))
             LazyColumn(modifier = Modifier
                 .fillMaxSize()
             ) {
@@ -92,8 +94,9 @@ fun GetDateAndTime () {
 @Composable
 fun GetLogo () {
     Image(modifier = Modifier
-        .fillMaxWidth(),
-        painter = painterResource(id = R.drawable.untitled),
+        .fillMaxWidth()
+        .size(250.dp),
+        painter = painterResource(id = R.drawable.beige_logo3),
         contentDescription = "logo")
 }
 

@@ -2,6 +2,7 @@ package hoods.com.todoapp.ui.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -11,11 +12,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import hoods.com.todoapp.data.Todo
 import hoods.com.todoapp.ui.home.GetLogo
-import hoods.com.todoapp.ui.theme.Blue_
-import hoods.com.todoapp.ui.theme.DeepBlue
+import hoods.com.todoapp.ui.theme.*
+
 /** UI muss angepasst werden */
 @Composable
 fun DetailScreen(
@@ -48,23 +50,24 @@ fun DetailScreenComponent(
 ) {
 
     val isTodoEdit = selectedId == -1L
-    Box(contentAlignment = Alignment.Center,
-    modifier = Modifier
+    Box(modifier = Modifier
         .fillMaxWidth()
-        .background(DeepBlue)) {
-    Column(
-        modifier = Modifier
+        .background(Beige1)
+    ) {
+    Column(modifier = Modifier
+            .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp),
 
-         //   .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp),
-        //  verticalArrangement = Arrangement.Center,
-        // horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.size(10.dp))
         GetLogo()
         Spacer(modifier = Modifier.size(16.dp))
         Column(modifier = Modifier
             .fillMaxSize()
-            .clip(RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(10.dp)),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+
+
             ) {
             OutlinedTextField(
                 value = todoText,
@@ -72,23 +75,34 @@ fun DetailScreenComponent(
 
                 ),
                 onValueChange = { onTodoTextChange(it) },
-                label = { Text(text = "Enter Todo") }
+                label = { Text(text = "Todo-Name") }
             )
             Spacer(modifier = Modifier.size(16.dp))
             OutlinedTextField(
                 value = timeText,
                 onValueChange = { onTimeTextChange(it) },
-                label = { Text(text = "Enter Time") }
+                label = { Text(text = "Todo-Time") }
             )
             Spacer(modifier = Modifier.size(16.dp))
-            Button(onClick = {
-                val todo = if (isTodoEdit) Todo(todoText, timeText)
-                else Todo(todoText, timeText, id = selectedId)
-                onSaveTodo(todo)
-                onNavigate()
-            }) {
-                val text = if (isTodoEdit) "Save Todo" else "Update todo"
-                Text(text = text)
+            Button(
+                modifier = Modifier
+                .height(50.dp)
+                .width(100.dp),
+                onClick = {
+                    val todo = if (isTodoEdit) Todo(todoText, timeText)
+                    else Todo(todoText, timeText, id = selectedId)
+                    onSaveTodo(todo)
+                    onNavigate()
+                          } ,
+                shape = CircleShape,
+                colors = ButtonDefaults.buttonColors(backgroundColor = Beige3)
+            )
+             {
+                val text = if (isTodoEdit) "Save" else "Update todo"
+                Text(
+                    text = text,
+                    fontSize = 18.sp,
+                )
             }
         }
     }

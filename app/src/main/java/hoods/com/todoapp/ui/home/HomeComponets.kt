@@ -29,7 +29,7 @@ fun TodoItem(
         modifier = Modifier
             .padding(start = 10.dp, top = 10.dp, bottom = 10.dp, end = 10.dp)
             .clip(RoundedCornerShape(10.dp))
-            .background(DeepBlue)
+          //  .background(DeepBlue)
     ){
         Column {
             Card {
@@ -37,7 +37,7 @@ fun TodoItem(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
                         .size(80.dp)
-                      //  .background(DeepBlue)
+                        .background(Beige2)
                         .padding(start = 15.dp, top = 15.dp, bottom = 15.dp)
                 ) {
 
